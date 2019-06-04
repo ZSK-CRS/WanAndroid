@@ -1,0 +1,47 @@
+@startuml
+
+title \n Awesome-WanAndroid \n
+
+skinparam backgroundColor #AEFFFF
+skinparam activityBackgroundColor peru
+skinparam activityBarColor #green
+skinparam activityBorderColor #ef5345
+skinparam activityFontName Impact
+
+rectangle View #lightGreen
+rectangle AbstractView #white
+rectangle AbstractPresenter #white
+rectangle Presenter #lightGreen
+rectangle DataManager #lightGreen
+rectangle HttpHelper #white
+rectangle HttpHelperImpl #lightGreen
+rectangle PreferenceHelper #white
+rectangle PreferenceHelperImpl #lightGreen
+rectangle DbHelper #white
+rectangle DBHelperImpl #lightGreen
+
+View -- AbstractView
+View -r-> AbstractPresenter
+AbstractPresenter -l-> View
+AbstractPresenter -- Presenter
+Presenter -l-> AbstractView
+AbstractView -r-> Presenter
+Presenter -r-> DataManager
+DataManager -l-> Presenter
+DataManager -r-> PreferenceHelper
+PreferenceHelper -l-> DataManager
+PreferenceHelper -r- PreferenceHelperImpl
+DataManager -u-> HttpHelper
+HttpHelper -d-> DataManager
+HttpHelper -u- HttpHelperImpl
+DataManager -d-> DbHelper
+DbHelper -u-> DataManager
+DbHelper -d- DBHelperImpl
+
+
+
+
+
+
+
+@enduml
